@@ -3,6 +3,31 @@ export LANGUAGE=en_US.UTF-8
 export LC_COLLATE=C
 export LC_CTYPE=en_US.UTF-8
 
+
+# check os versio
+os=$(cat /etc/os-release | grep PRETTY_NAME)
+echo $os 
+
+
+known_versions=("CentOS Linux 7 (Core)")
+
+
+
+for known_version in "${known_versions[@]}"; do
+        if [ "$os" == "$known_version" ]; then
+            found=true
+            break
+        fi
+done
+
+
+if $found; then
+        echo "Current OS version ($known_version) is in the list of supported OS."
+    else
+        echo "Current OS version ($known_version) is not in the list of not supported OS."
+        exit 1
+fi
+
 yum install -y -q  epel-release
 yum update -y -q 
 
