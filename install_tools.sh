@@ -3,15 +3,13 @@ export LANGUAGE=en_US.UTF-8
 export LC_COLLATE=C
 export LC_CTYPE=en_US.UTF-8
 
-
+###############################################################################
 # check os versio
-os=$(cat /etc/os-release | grep PRETTY_NAME)
-echo $os 
-
+os=$(cat /etc/os-release | grep PRETTY_NAME |  cut -d'"' -f2)
 
 known_versions=("CentOS Linux 7 (Core)")
 
-
+found=false
 
 for known_version in "${known_versions[@]}"; do
         if [ "$os" == "$known_version" ]; then
@@ -20,7 +18,6 @@ for known_version in "${known_versions[@]}"; do
         fi
 done
 
-
 if $found; then
         echo "Current OS version ($known_version) is in the list of supported OS."
     else
@@ -28,6 +25,7 @@ if $found; then
         exit 1
 fi
 
+####################################################################################""
 yum install -y -q  epel-release
 yum update -y -q 
 
@@ -76,14 +74,19 @@ chsh -s $(which zsh)
 #configure
 git config --global credential.helper store
 
-#install oh my zsh 
 
-runuser -l outscale  -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+#install oh my zsh
+user=outscale
+runuser -l $user  -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
 
-runuser -l outscale  -c 'git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions' 
+runuser -l $user  -c 'ZSH_CUSTOM=/home/'"$user"'/.oh-my-zsh/custom && git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions'
 
-runuser -l outscale  -c 'git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting'
+runuser -l $user  -c 'ZSH_CUSTOM=/home/'"$user"'/.oh-my-zsh/custom && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting'
 
-runuser -l outscale  -c 'git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search'
+runuser -l $user  -c 'ZSH_CUSTOM=/home/'"$user"'/.oh-my-zsh/custom && git clone https://github.com/zsh-users/zsh-history-substring-search $ZSH_CUSTOM/plugins/zsh-history-substring-search'
+
+runuser -l $user  -c "sed -i 's/plugins=(git)/plugins=(history-substring-search zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc"
+
+runuser -l $user  -c 'source ~/.zshrc'
 
 
