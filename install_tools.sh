@@ -2,12 +2,12 @@
 # check os versio
 os=$(cat /etc/os-release | grep PRETTY_NAME |  cut -d'"' -f2)
 
-known_versions=("CentOS Linux 7 (Core)" "Rocky Linux 9.1 (Blue Onyx)" )
+known_versions=("Rocky Linux 9.2 (Blue Onyx)" "CentOS Linux 7 (Core)" "Rocky Linux 9.1 (Blue Onyx)" )
 
 found=false
 
 for known_version in "${known_versions[@]}"; do
-        if [ "$os" == "$known_version" ]; then
+        if [ "$os" = "$known_version" ]; then
             found=true
             break
         fi
