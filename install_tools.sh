@@ -63,16 +63,14 @@ socat
 lsscsi"
 
 
-# Split the string into an array using newline as the separator
 IFS=$'\n' read -rd '' -a list_array <<< "$my_list"
 
-echo "Install basic package tools : it cantake some minites please wait ..."
+echo "Install basic package tools : it can take some minites please wait ..."
 for item in "${list_array[@]}"; do
      yum -y -q install $item
 done
 
-# make zsh default shell
-chsh -s $(which zsh) 
+
 echo "Configure git"
 #configure
 git config --global credential.helper store
@@ -107,6 +105,13 @@ if [ "$os" == "CentOS Linux 7 (Core)" ]; then
 elif [ "$os" == "Rocky Linux 9.1 (Blue Onyx)" ]; then
    sudo -u  outscale zsh -c "source /home/'"$user"'/.zshrc"
 fi
+
+
+
+# make zsh default shell
+echo "set zsh for user"
+sudo usermod --shell /usr/bin/zsh  outscale 
+
 
 
 echo "###########################################################"
