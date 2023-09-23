@@ -7,7 +7,7 @@ export LC_CTYPE=en_US.UTF-8
 # check os versio
 os=$(cat /etc/os-release | grep PRETTY_NAME |  cut -d'"' -f2)
 
-known_versions=("CentOS Linux 7 (Core)")
+known_versions=("CentOS Linux 7 (Core)" "Rocky Linux 9.1 (Blue Onyx)" )
 
 found=false
 
