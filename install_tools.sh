@@ -14,9 +14,9 @@ for known_version in "${known_versions[@]}"; do
 done
 
 if $found; then
-        echo "Current OS version ($known_version) is in the list of supported OS."
+        echo "Current OS version ($os) is in the list of supported OS."
     else
-        echo "Current OS version ($known_version) is not in the list of not supported OS."
+        echo "Current OS version ($os) is not in the list of not supported OS."
         exit 1
 fi
 
