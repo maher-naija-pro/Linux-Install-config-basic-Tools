@@ -91,6 +91,6 @@ runuser -l $user  -c 'ZSH_CUSTOM=/home/'"$user"'/.oh-my-zsh/custom && git clone 
 
 runuser -l $user  -c "sed -i 's/plugins=(git)/plugins=(history-substring-search zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc"
 
-runuser -l $user  -c 'source ~/.zshrc'
+runuser -l $user  -c 'source /home/'"$user"'/.zshrc'
 
 
