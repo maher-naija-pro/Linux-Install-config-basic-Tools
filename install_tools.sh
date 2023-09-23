@@ -1,8 +1,3 @@
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-export LC_COLLATE=C
-export LC_CTYPE=en_US.UTF-8
-
 ###############################################################################
 # check os versio
 os=$(cat /etc/os-release | grep PRETTY_NAME |  cut -d'"' -f2)
@@ -25,6 +20,10 @@ if $found; then
         exit 1
 fi
 
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LC_COLLATE=C
+export LC_CTYPE=en_US.UTF-8
 ####################################################################################""
 if [ "$os" == "CentOS Linux 7 (Core)" ]; then
 echo "Install epel releases"
