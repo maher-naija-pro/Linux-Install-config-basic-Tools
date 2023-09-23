@@ -81,16 +81,36 @@ git config --global credential.helper store
 #install oh my zsh
 echo "Install Oh-myzsh"
 user=outscale
+
+ rm -rf /home/"$user"/.oh-my-zsh/custom/plugins/zsh*
+
 runuser -l $user  -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
 
-runuser -l $user  -c 'ZSH_CUSTOM=/home/'"$user"'/.oh-my-zsh/custom && git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions'
+echo "Install zsh-autosuggestions"
 
-runuser -l $user  -c 'ZSH_CUSTOM=/home/'"$user"'/.oh-my-zsh/custom && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting'
+runuser -l $user  -c 'ZSH_CUSTOM=/home/'"$user"'/.oh-my-zsh/custom && git clone --quiet https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions'
 
-runuser -l $user  -c 'ZSH_CUSTOM=/home/'"$user"'/.oh-my-zsh/custom && git clone https://github.com/zsh-users/zsh-history-substring-search $ZSH_CUSTOM/plugins/zsh-history-substring-search'
+echo "Install zsh-syntax-highlighting"
 
-runuser -l $user  -c "sed -i 's/plugins=(git)/plugins=(history-substring-search zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc"
+runuser -l $user  -c 'ZSH_CUSTOM=/home/'"$user"'/.oh-my-zsh/custom && git clone --quiet https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting'
 
-runuser -l $user  -c 'source /home/'"$user"'/.zshrc'
+echo "Install zsh-history-substring-search"
+
+runuser -l $user  -c 'ZSH_CUSTOM=/home/'"$user"'/.oh-my-zsh/custom && git clone --quiet https://github.com/zsh-users/zsh-history-substring-search $ZSH_CUSTOM/plugins/zsh-history-substring-search'
+
+echo "Config zsh"
+runuser -l $user  -c "sed -i 's/plugins=(git)/plugins=(history-substring-search zsh-autosuggestions zsh-syntax-highlighting)/' /home/'"$user"'/.zshrc"
 
 
+if [ "$os" == "CentOS Linux 7 (Core)" ]; then
+   runuser -l $user  -c "source /home/'"$user"'/.zshrc"
+elif [ "$os" == "Rocky Linux 9.1 (Blue Onyx)" ]; then
+   sudo -u  outscale zsh -c "source /home/'"$user"'/.zshrc"
+fi
+
+
+echo "###########################################################"
+echo "###########################################################"
+echo " ALL INSTALL SUCCESSFUL"
+echo "###########################################################"
+echo "###########################################################"
