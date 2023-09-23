@@ -26,7 +26,8 @@ if $found; then
 fi
 
 ####################################################################################""
-if $os== "CentOS Linux 7 (Core)"; then
+if [ "$os" == "CentOS Linux 7 (Core)" ]; then
+
 yum install -y -q  epel-release
 yum update -y -q 
 fi
