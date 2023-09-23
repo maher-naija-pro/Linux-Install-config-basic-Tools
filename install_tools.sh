@@ -45,6 +45,20 @@ for item in "${list_array[@]}"; do
      yum -y -q install $item
 done
 
+# make zsh default shell
+chsh -s $(which zsh) 
 
 #configure
 git config --global credential.helper store
+
+#install oh my zsh 
+
+runuser -l outscale  -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+
+runuser -l outscale  -c 'git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions' 
+
+runuser -l outscale  -c 'git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting'
+
+runuser -l outscale  -c 'git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search'
+
+
