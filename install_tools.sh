@@ -53,6 +53,7 @@ vim-enhanced
 wget
 zsh
 bc
+tmux 
 git
 screen
 strace
