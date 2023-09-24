@@ -99,22 +99,24 @@ echo "Config zsh"
 runuser -l $user  -c "sed -i 's/plugins=(git)/plugins=(history-substring-search zsh-autosuggestions zsh-syntax-highlighting)/' /home/'"$user"'/.zshrc"
 
 
-if [ "$os" == "CentOS Linux 7 (Core)" ]; then
-   runuser -l $user  -c "source /home/'"$user"'/.zshrc"
-elif [ "$os" == "Rocky Linux 9.1 (Blue Onyx)" ]; then
-   sudo -u  outscale zsh -c "source /home/'"$user"'/.zshrc"
-fi
-
-
 
 # make zsh default shell
 echo "set zsh for user"
 sudo usermod --shell /usr/bin/zsh  outscale 
+
+# install aliases
+echo "install aliases"
+alias=$(grep '#my_aliases'  /home/"$user"/.zshrc)
+if [ !$alias ]; then
+    echo '#my_aliases' >> /home/"$user"/.zshrc
+    curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/Best-Linux-Aliases/main/aliases.sh >>  /home/"$user"/.zshrc
+fi
 
 
 
 echo "###########################################################"
 echo "###########################################################"
 echo " ALL INSTALL SUCCESSFUL"
+echo " Reconnect to your session "
 echo "###########################################################"
 echo "###########################################################"
