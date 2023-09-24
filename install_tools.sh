@@ -110,19 +110,19 @@ sudo usermod --shell /usr/bin/zsh  outscale
 # install aliases
 echo "install aliases"
 alias=$(grep '#my_aliases'  /home/"$user"/.zshrc)
-if [ !$alias ]; then
+if [ "$alias" != "#my_aliases" ]; then
     echo '#my_aliases' >> /home/"$user"/.zshrc
-    curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/Best-Linux-Aliases/main/aliases.sh >>  /home/"$user"/.zshrc
+    curl -s -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/Best-Linux-Aliases/main/aliases.sh >>  /home/"$user"/.zshrc
 fi
 
 #Install vimrc 
-runuser -l $user  -c "curl -fLo /home/'"$user"'/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-rm -rf  /home/"$user"/.vimrc  
+curl -s -fLo /home/"$user"/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim=$(grep '"my_vim'  /home/"$user"/.vimrc)
+rm -rf  /home/"$user"/.vimrc
 if [ !$vim ]; then
     echo '"my_vim' >> /home/"$user"/.vimrc
 
-    curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/My-VimRC/main/.vimrc >>  /home/"$user"/.vimrc 
+    curl -s -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/My-VimRC/main/.vimrc >>  /home/"$user"/.vimrc 
 fi
 
 
