@@ -67,7 +67,7 @@ IFS=$'\n' read -rd '' -a list_array <<< "$my_list"
 
 echo "Install basic package tools : it can take some minites please wait ..."
 for item in "${list_array[@]}"; do
-     yum -y -q install $item
+    sudo yum -y -q install $item
 done
 
 
@@ -78,26 +78,28 @@ git config --global credential.helper store
 
 #install oh my zsh
 echo "Install Oh-myzsh"
-user=outscale
+user=$(whoami)
 
- rm -rf /home/"$user"/.oh-my-zsh/custom/plugins/zsh*
+rm -rf /home/"$user"/.oh-my-zsh/custom/plugins/zsh*
 
-runuser -l $user  -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "Install zsh-autosuggestions"
 
-runuser -l $user  -c 'ZSH_CUSTOM=/home/'"$user"'/.oh-my-zsh/custom && git clone --quiet https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions'
+ZSH_CUSTOM=/home/"$user"/.oh-my-zsh/custom && git clone --quiet https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 echo "Install zsh-syntax-highlighting"
 
-runuser -l $user  -c 'ZSH_CUSTOM=/home/'"$user"'/.oh-my-zsh/custom && git clone --quiet https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting'
+
+ZSH_CUSTOM=/home/"$user"/.oh-my-zsh/custom && git clone --quiet https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
 echo "Install zsh-history-substring-search"
 
-runuser -l $user  -c 'ZSH_CUSTOM=/home/'"$user"'/.oh-my-zsh/custom && git clone --quiet https://github.com/zsh-users/zsh-history-substring-search $ZSH_CUSTOM/plugins/zsh-history-substring-search'
+ZSH_CUSTOM=/home/"$user"/.oh-my-zsh/custom && git clone --quiet https://github.com/zsh-users/zsh-history-substring-search $ZSH_CUSTOM/plugins/zsh-history-substring-search
 
 echo "Config zsh"
-runuser -l $user  -c "sed -i 's/plugins=(git)/plugins=(history-substring-search zsh-autosuggestions zsh-syntax-highlighting)/' /home/'"$user"'/.zshrc"
+sed -i 's/plugins=(git)/plugins=(history-substring-search zsh-autosuggestions zsh-syntax-highlighting)/' /home/"$user"/.zshrc
 
 
 
