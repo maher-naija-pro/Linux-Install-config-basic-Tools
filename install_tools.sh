@@ -132,7 +132,7 @@ sed -i "s/robbyrussell/powerlevel10k\/powerlevel10/g" /home/"$user"/.zshrc
 echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> /home/"$user"/.zshrc
 
 
-curl -s -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/zsh_config/main/.p10k.zsh?token=GHSAT0AAAAAACHEHH57N2TX622RTGLMYLV2ZISZEJQ >>  /home/"$user"/.p10k.zsh
+curl -s -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/My-zsh-conf/main/.p10k.zsh >>  /home/"$user"/.p10k.zsh
 
 echo "###########################################################"
 echo "###########################################################"
