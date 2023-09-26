@@ -53,7 +53,6 @@ zsh
 bc
 tmux 
 git
-screen
 strace
 python3.x86_64
 python3-pip.noarch
