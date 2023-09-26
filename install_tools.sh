@@ -35,8 +35,6 @@ my_list="bind-utils
 curl
 dmidecode
 fio
-htop
-iftop
 iotop
 lsof
 mlocate
