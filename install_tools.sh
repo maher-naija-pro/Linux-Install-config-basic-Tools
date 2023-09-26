@@ -81,7 +81,7 @@ user=$(whoami)
 rm -rf /home/"$user"/.oh-my-zsh/custom/plugins/zsh*
 
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &
 
 echo "Install zsh-autosuggestions"
 
