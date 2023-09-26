@@ -127,7 +127,7 @@ fi
 
 #install theme 
 git clone https://github.com/romkatv/powerlevel10k.git  /home/"$user"/.oh-my-zsh/themes/powerlevel10k 
-sed -i "s/robbyrussell/powerlevel10k\/powerlevel10/g" /home/"$user"/.zshrc
+sed -i "s/robbyrussell/powerlevel10k\/powerlevel10k/g" /home/"$user"/.zshrc
 
 echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> /home/"$user"/.zshrc
 
