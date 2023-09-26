@@ -30,7 +30,7 @@ Feel free to fork and update
 To get started, follow these steps:
 1. : Execute this command with sudoer user 
 
-   sh -c -v "$(curl -H 'Cache-Control: no-cache, no-store'  https://raw.githubusercontent.com/maher-naija-pro/Linux-Install-config-basic-Tools/main/install_tools.sh  )"
+   sh -c -v "$(curl -s -H 'Cache-Control: no-cache, no-store'  https://raw.githubusercontent.com/maher-naija-pro/Linux-Install-config-basic-Tools/main/install_tools.sh  )"
 
     NOTE: run the cmd under the user you will use it without sudo but the user should  be able to execute sudo 
    ### Prerequisites
