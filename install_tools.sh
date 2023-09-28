@@ -73,10 +73,13 @@ done
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
+rm -rf  awscliv2.zip
 
 echo "Configure git"
 #configure
 git config --global credential.helper store
+git config --global user.email "maher.naija@gmail.com"
+git config --global user.name "maher.naija"
 
 
 #install oh my zsh
