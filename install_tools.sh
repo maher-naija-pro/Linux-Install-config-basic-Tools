@@ -104,10 +104,6 @@ echo "Install zsh-history-substring-search"
 
 ZSH_CUSTOM=/home/"$user"/.oh-my-zsh/custom && git clone --quiet https://github.com/zsh-users/zsh-history-substring-search $ZSH_CUSTOM/plugins/zsh-history-substring-search
 
-echo "Config zsh"
-sed -i 's/plugins=(git)/plugins=(history-substring-search zsh-autosuggestions zsh-syntax-highlighting)/' /home/"$user"/.zshrc
-
-
 
 # make zsh default shell
 echo "set zsh for user"
@@ -132,7 +128,7 @@ if [ !$vim ]; then
 fi
 
 #install theme 
-git clone https://github.com/romkatv/powerlevel10k.git  /home/"$user"/.oh-my-zsh/themes/powerlevel10k 
+ZSH_CUSTOM=/home/"$user"/.oh-my-zsh/custom && git clone https://github.com/romkatv/powerlevel10k.git  /home/"$user"/.oh-my-zsh/themes/powerlevel10k 
 sed -i "s/robbyrussell/powerlevel10k\/powerlevel10k/g" /home/"$user"/.zshrc
 
 echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> /home/"$user"/.zshrc
