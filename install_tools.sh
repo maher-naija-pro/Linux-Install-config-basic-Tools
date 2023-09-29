@@ -109,32 +109,11 @@ ZSH_CUSTOM=/home/"$user"/.oh-my-zsh/custom && git clone --quiet https://github.c
 echo "set zsh for user"
 sudo usermod --shell /usr/bin/zsh  outscale 
 
-# install aliases
-echo "install aliases"
-alias=$(grep '#my_aliases'  /home/"$user"/.zshrc)
-if [ "$alias" != "#my_aliases" ]; then
-    echo '#my_aliases' >> /home/"$user"/.zshrc
-    curl -s -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/Best-Linux-Aliases/main/aliases.sh >>  /home/"$user"/.zshrc
-fi
-
-#Install vimrc 
-curl -s -fLo /home/"$user"/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim=$(grep '"my_vim'  /home/"$user"/.vimrc)
-rm -rf  /home/"$user"/.vimrc
-if [ !$vim ]; then
-    echo '"my_vim' >> /home/"$user"/.vimrc
-
-    curl -s -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/My-VimRC/main/.vimrc >>  /home/"$user"/.vimrc 
-fi
 
 #install theme 
 ZSH_CUSTOM=/home/"$user"/.oh-my-zsh/custom && git clone https://github.com/romkatv/powerlevel10k.git  /home/"$user"/.oh-my-zsh/themes/powerlevel10k 
-sed -i "s/robbyrussell/powerlevel10k\/powerlevel10k/g" /home/"$user"/.zshrc
 
-echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> /home/"$user"/.zshrc
-
-
-curl -s -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/My-zsh-conf/main/.p10k.zsh >>  /home/"$user"/.p10k.zsh
+sh -c -v "$(curl -s -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/All-my-configs/main/conf.sh )"
 
 echo "###########################################################"
 echo "###########################################################"
