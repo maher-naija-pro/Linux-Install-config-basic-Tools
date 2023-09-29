@@ -64,7 +64,7 @@ IFS=$'\n' read -rd '' -a list_array <<< "$my_list"
 
 echo "Install basic package tools : it can take some minites please wait ..."
 for item in "${list_array[@]}"; do
-    sudo yum -y -q install $item &
+    sudo yum -y -q install $item 
 done
 
 
