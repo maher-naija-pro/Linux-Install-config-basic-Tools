@@ -116,7 +116,7 @@ ZSH_CUSTOM=/home/"$user"/.oh-my-zsh/custom && git clone https://github.com/romka
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
 
 
-#sh -c -v "$(curl -s -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/All-my-configs/main/conf.sh )"
+sh -c -v "$(curl -s -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/All-my-configs/main/conf.sh )"
 
 echo "###########################################################"
 echo "###########################################################"
