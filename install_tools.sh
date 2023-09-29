@@ -31,8 +31,10 @@ yum install -y -q  epel-release
 yum update -y -q 
 fi
 
+# install mandatory packages 
+sudo yum -y -q install  git tmux curl zip unzip wget zsh
+
 my_list="bind-utils
-curl
 dmidecode
 fio
 iotop
@@ -46,12 +48,8 @@ tcpdump
 telnet
 traceroute
 tree
-unzip
 vim-enhanced
-wget
-zsh
 bc
-tmux 
 git
 strace
 python3.x86_64
@@ -64,7 +62,7 @@ IFS=$'\n' read -rd '' -a list_array <<< "$my_list"
 
 echo "Install basic package tools : it can take some minites please wait ..."
 for item in "${list_array[@]}"; do
-    sudo yum -y -q install $item 
+    sudo yum -y -q install $item  & 
 done
 
 
