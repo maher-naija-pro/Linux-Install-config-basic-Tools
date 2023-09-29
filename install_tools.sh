@@ -113,7 +113,7 @@ sudo usermod --shell /usr/bin/zsh  outscale
 #install theme 
 ZSH_CUSTOM=/home/"$user"/.oh-my-zsh/custom && git clone https://github.com/romkatv/powerlevel10k.git  /home/"$user"/.oh-my-zsh/themes/powerlevel10k 
 
-sh -c -v "$(curl -s -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/All-my-configs/main/conf.sh )"
+#sh -c -v "$(curl -s -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/All-my-configs/main/conf.sh )"
 
 echo "###########################################################"
 echo "###########################################################"
