@@ -67,14 +67,6 @@ for item in "${list_array[@]}"; do
     sudo yum -y -q install $item 
 done
 
-
-# install aws cli 
-
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install & 
-rm -rf  awscliv2.zip
-
 echo "Configure git"
 #configure
 git config --global credential.helper store
@@ -117,6 +109,17 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 
 
 sh -c -v "$(curl -s -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/maher-naija-pro/All-my-configs/main/conf.sh )"
+
+if [ $1 == "admin" ]
+# install aws cli
+
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.z
+  ip" -o "awscliv2.zip"
+  unzip awscliv2.zip
+  sudo ./aws/install &
+  rm -rf  awscliv2.zip
+
+fi 
 
 echo "###########################################################"
 echo "###########################################################"
