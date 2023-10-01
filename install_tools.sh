@@ -119,6 +119,8 @@ if [ $1 == "admin" ]
   sudo ./aws/install &
   rm -rf  awscliv2.zip
 
+  sh -c -v "$(curl -s -H 'Cache-Control: no-cache, no-store'  https://raw.githubusercontent.com/maher-naija-pro/All-my-configs/main/admin_conf.sh )"
+
 fi 
 
 echo "###########################################################"
