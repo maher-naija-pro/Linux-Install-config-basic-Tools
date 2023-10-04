@@ -56,6 +56,8 @@ git
 strace
 python3.x86_64
 python3-pip.noarch
+epel-release.noarch
+xclip
 socat
 lsscsi"
 
