@@ -59,6 +59,8 @@ python3-pip.noarch
 epel-release.noarch
 xclip
 socat
+btop
+tltr
 lsscsi"
 
 
